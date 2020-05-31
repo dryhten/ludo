@@ -11,6 +11,7 @@ class Token {
     this.centerY = (y + 0.5) * this.stepSize;
     // @ts-ignore
     this.open = false;
+    this.home = false;
     this.dir = dir;
   }
 
@@ -29,61 +30,6 @@ class Token {
     this.y = y;
     this.centerX = (x + 0.5) * this.stepSize;
     this.centerY = (y + 0.5) * this.stepSize;
-  }
-
-  // Maybe move this function outside. Into Player?
-  move(numMoves) {
-    while (numMoves) {
-      switch (this.dir) {
-        case "r":
-          if (this.x === 14 || this.x === 8) {
-            this.moveTo(this.x, this.y + 1);
-            this.dir = "d";
-          } else if (this.x === 5) {
-            this.moveTo(this.x + 1, this.y - 1);
-            this.dir = "u";
-          } else {
-            this.moveTo(this.x + 1, this.y);
-          }
-          break;
-        case "l":
-          if (this.x === 9) {
-            this.moveTo(this.x - 1, this.y + 1);
-            this.dir = "d";
-          } else if (this.x === 6 || this.x === 0) {
-            this.moveTo(this.x, this.y - 1);
-            this.dir = "u";
-          } else {
-            this.moveTo(this.x - 1, this.y);
-          }
-          break;
-        case "u":
-          if (this.y === 9) {
-            this.moveTo(this.x - 1, this.y - 1);
-            this.dir = "l";
-          } else if (this.y === 6 || this.y === 0) {
-            this.moveTo(this.x + 1, this.y);
-            this.dir = "r";
-          } else {
-            this.moveTo(this.x, this.y - 1);
-          }
-          break;
-        case "d":
-          if (this.y === 5) {
-            this.moveTo(this.x + 1, this.y + 1);
-            this.dir = "r";
-          } else if (this.y === 8 || this.y === 14) {
-            this.moveTo(this.x - 1, this.y);
-            this.dir = "l";
-          } else {
-            this.moveTo(this.x, this.y + 1);
-          }
-          break;
-        default:
-          break;
-      }
-      numMoves--;
-    }
   }
 
   openToken() {

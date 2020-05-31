@@ -41,7 +41,7 @@ function callback(e) {
   players.forEach((player) => {
     player.tokens.forEach((token) => {
       if (token.open && player.turn && isIntersecting(mousePosition, token)) {
-        token.move(5);
+        player.move(token, 5);
         refreshBoard(board, players, ctx);
         // requestAnimationFrame(callback);
       }
